@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f6f3e9"><meta name="description" content="陪 Coco 穿过一个小小的梦，学着拥抱完整的自己。一段温柔的狗狗冒险。">
+  <title>Like a dog</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="routes.css">
+</head>
+<body>
+  <div class="shell">
+    <header><a class="wordmark" href="./" aria-label="Like a dog 首页"><span class="paw">✿</span> Like a dog</a><div class="toolbar"><button id="sound" aria-label="开启音乐" title="音乐开关">♫ <span>音乐关</span></button><button id="pause" aria-label="暂停游戏">Ⅱ <span>暂停</span></button><button id="help" aria-label="查看操作说明">? <span>操作</span></button></div></header>
+    <main id="stage" aria-label="狗狗冒险游戏区域">
+      <canvas id="world" width="1280" height="720" aria-label="左右移动，空格跳跃，J 吠叫或投掷，E 交谈"></canvas>
+      <div id="hud" hidden><div><span id="chapter-label">第一章</span><h2 id="chapter-title">有风的地方</h2></div><div class="tart-counter"><span aria-hidden="true">🥧</span><span id="tart-count">0 / 10</span></div></div>
+      <div id="objective" hidden></div><div id="toast" role="status"></div>
+      <section id="menu" class="screen">
+        <div class="menu-copy"><h1 class="english-title">Like a dog</h1><div class="characters"><button class="character selected" id="choose-coco" aria-pressed="true"><canvas width="170" height="110" id="portrait-coco"></canvas><span><b>Coco</b></span><i>✓</i></button><button class="character locked" id="choose-benson" aria-disabled="true" aria-pressed="false"><canvas width="170" height="110" id="portrait-benson"></canvas><span><b>Benson <em id="lock-icon">♧</em></b><small id="unlock-copy">未解锁</small></span><i>✓</i></button></div><button class="primary" id="start">走进这个梦 <span>→</span></button><button id="continue" class="text-button" hidden>继续上次的旅程 →</button></div>
+      </section>
+      <section id="dialogue" class="dialogue" hidden aria-label="剧情对话"><div class="speaker-portrait"><canvas id="dialogue-portrait" width="140" height="100"></canvas></div><div class="dialogue-content"><b id="speaker"></b><p id="line" aria-live="polite"></p></div><button id="next" aria-label="下一句对话">继续 <span>▸</span></button></section>
+      <section id="chapter-card" class="chapter-card" hidden><p id="card-number"></p><h2 id="card-title"></h2><button class="primary" id="card-go">出发 →</button></section>
+      <section id="anniversary" class="screen anniversary" hidden><h2>特别的日子 ♡</h2><div class="anniversary-actions"><button id="memory-open" class="primary">打开纪念彩蛋 ♡</button><button id="anniversary-end" class="secondary">带着回忆谢幕 →</button></div><p class="anniversary-sign">作者：river</p></section>
+      <section id="memory" class="memory-screen" hidden><img src="assets/anniversary.jpg" alt="river 与 Ada 的第 52 天纪念图，起始日 2026 年 9 月 1 日"><div><button id="memory-back" class="secondary">← 回到纪念日</button><button id="memory-finish" class="primary">温柔谢幕 ♡</button></div></section>
+      <section id="ending" class="screen ending" hidden><h2 id="ending-title">每一个我，<br>都一起往前走。</h2><img id="curtain-photo" src="assets/anniversary.jpg" alt="river 与 Ada 的第 52 天纪念图，起始日 2026 年 9 月 1 日" hidden><div class="ending-tarts" id="ending-tarts"></div><p id="unlock-message" class="unlock-message"></p><div class="ending-buttons"><button class="primary" id="replay">再走一次 →</button><button id="share" class="secondary">分享这个梦 ↗</button></div><p class="credits" id="credits">作者：river</p></section>
+      <section id="pause-panel" class="modal-backdrop" hidden><div class="modal"><h2>已暂停</h2><p>进度已保存在当前浏览器。</p><button id="resume" class="primary">继续旅程 →</button><button id="home" class="text-button">回到角色选择</button></div></section>
+      <section id="help-panel" class="modal-backdrop" hidden><div class="modal"><h2>操作说明</h2><dl><dt>← → / A D</dt><dd>左右走动</dd><dt>空格 / ↑ / W</dt><dd>跳过小老鼠和缺口</dd><dt>J / 点击「汪」</dt><dd>吠叫赶走老鼠 · Boss 战投掷蛋挞</dd><dt>E / 回车</dt><dd>交谈、继续 · 最后试着靠近</dd><dt>Esc / P</dt><dd>暂停与继续</dd></dl><p>跌落后就近重试，收集的蛋挞会留着。<br>音乐可随时关闭。</p><button id="close-help" class="primary">记住啦 →</button></div></section>
+      <div id="touch-controls" hidden><div><button data-hold="left" aria-label="向左移动">←</button><button data-hold="right" aria-label="向右移动">→</button></div><div><button data-tap="bark" aria-label="吠叫或投掷">汪</button><button data-tap="jump" aria-label="跳跃">↑</button><button data-tap="interact" aria-label="交谈">♡</button></div></div>
+      <div id="loading">加载中…</div>
+    </main>
+    <footer><div class="keyboard-guide"><kbd>←</kbd><kbd>→</kbd> 移动 <span>·</span> <kbd>空格</kbd> 跳跃 <span>·</span> <kbd>J</kbd> 吠叫 <span>·</span> <kbd>E</kbd> 交谈</div><span>作者：river</span></footer>
+  </div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
